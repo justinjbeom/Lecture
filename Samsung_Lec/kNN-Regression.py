@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import math
 import csv
 import random
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 import operator
 
 

@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import math
 import csv
 import random
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 import operator
 
 
@@ -29,7 +29,8 @@ def loadDataset(filename):
 
 def euclideanDistance(instance1, instance2): 
     distance=0
-#fill out here.
+#####fill out here.
+#instance has a form like [4.6, 3.2, 1.4, 0.2, 'Setosa']
 #we need to calculate euclidean distance between instance1 and 2.
 #the return value of distance is a scalar value.
     return distance

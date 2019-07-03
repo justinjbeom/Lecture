@@ -35,11 +35,9 @@ def loadDataset(filename):
 # In[9]:
 
 
-verbose = False
-def RSS(splits):
+def RSS(splits):#splits has a form like np.array([[[1,2,0,2],[2,4,0,8]],[[1,3,4,5]]])
     residual = 0
-    for split in splits: #splits has a form like np.array([[[1,2,0,2],[2,4,0,8]],[[1,3,4,5]]])
-                         #split has a form like np.array([[1,2,0,2],[2,4,0,8]]). last value for each list is Balance. 
+    for split in splits:  #split has a form like np.array([[1,2,0,2],[2,4,0,8]]). last value for each list is Balance. 
         if(len(split) != 0):
             mean = ###fill out here. We need to caculate mean of each split.
             residual = residual+ ###fill out here. we need to calculate RSS for each split and sum them up. 
@@ -62,7 +60,7 @@ else:
 # In[11]:
 
 
-def split(index, value, data):  #data has a form like np.array([[1,2,0,2],[2,4,0,8]])
+def split(index, value, data):  #data has a form like np.array([[1,2,0,2],[2,4,0,8]]), last element is a target value.
     left_split = #####Fill out here, we need to make a list using condition like 'element[index]<value'
     right_split = #####Fill out here, we need to make a list using condition like 'element[index]>=value'
     return [left_split, right_split]
@@ -71,6 +69,7 @@ def split(index, value, data):  #data has a form like np.array([[1,2,0,2],[2,4,0
 # In[19]:
 
 
+verbose = False
 def split_tester(data): #find optimal split
     optimal_split_ind, optimal_split_value, optimal_residual, optimal_splits = -1,-1,float("inf"),[] #initialization.
     for curr_ind in range(data.shape[1]-1): #for all features , Age, Income, Limit....
@@ -108,7 +107,7 @@ else:
 
 def tree_building(data, min_size): #minimun data size in a split
     if(data.shape[0] > min_size): #building tree until the minimum.
-        ind, value, [left, right] = split_tester(data) #using optimal criteria using split_tester
+        ind, value, [left, right] = split_tester(data) #get optimal criteria using split_tester
         left, right = np.array(left), np.array(right)
         return [tree_building(left, min_size), tree_building(right, min_size),ind,value]
     else:
@@ -127,9 +126,9 @@ def predict(tree, input_vector):#recursive until reaching the leaf node.
     else:  #before reaching leaf node
         left_tree, right_tree, split_ind, split_value = tree #information of the current split 
         if(input_vector[split_ind]<split_value): #which split the input data belong to
-            return predict(left_tree, input_vector)
+            return #### Fill out here using recursion
         else:
-            return predict(right_tree, input_vector)
+            return #### Fill out here using recursion
     
 
 
@@ -165,7 +164,7 @@ main()
 
 
 # import random
-
+# from random import randrange
 
 # def subsample(dataset, ratio=1):
 #     sample = list()
